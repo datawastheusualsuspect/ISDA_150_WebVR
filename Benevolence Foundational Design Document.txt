@@ -1,0 +1,145 @@
+
+Foundational Design Document: "Benevolence"
+1. User Task Matrix (Global)
+* Who are your users?
+o Demographics: Broad audience, ages 13+. Skews towards adults (25-55) seeking relaxing, non-violent, and emotionally resonant experiences.
+o Technical Comfort: Novice to Intermediate VR users. The app is designed to be a comfortable "first experience" for many, avoiding complex button mapping or rapid movements.
+o Accessibility Needs:
+* Play Style: Fully playable while seated. Room-scale is supported but not required.
+* Visual: High-contrast mode for monochrome sections. The transition to color is also supported by changes in luminosity, texture, and sound to be accessible for users with color vision deficiency.
+* Auditory: All task guidance is accompanied by clear, simple on-screen text. Key sound cues have visual counterparts.
+* Motor: Interactions require gentle, slow movements, not speed or precision. Generous snap zones for placing objects.
+* What are their primary goals for engaging with your XR space?
+o Relax and de-stress in a beautiful, calming environment.
+o Feel a sense of agency and positive impact.
+o Experience a narrative of hope and restoration.
+o Engage in mindful, meditative interactions without the pressure of failure, timers, or scores.
+* How will they achieve these goals?
+o Using the core mechanic of glowing hands to nurture, mend, and connect with the world.
+o Progressing through a linear series of scenes, each presenting a new benevolent challenge.
+o Observing the direct positive of actions so that the world transforms from dank monochrome to vibrant color.
+* What are potential barriers or challenges they might encounter?
+o Unclear interaction cues.
+o Motion sickness.
+o Frustration if a gesture is not interpreted correctly.
+o Feeling unsure of the next objective.
+
+
+
+2. Style Guide (Global)
+* Typography:
+o Headings/Prompts: Lato Bold. Clean, soft, highly legible in VR.
+o Subtitles/Body Text: Lato Regular. Ensures readability without being distracting.
+o Interface Elements: Fira Sans. A slightly more technical but still friendly font for any menu text.
+* Color Palette:
+o Monochrome World: Shades of cool gray (HEX #333333 to #DCDCDC), desaturated blues. Evokes sadness and neglect, not just a lack of color.
+o Benevolent Light (User): Warm, pulsating gold and soft white (HEX #FFD700, #FFF8E7). Represents warmth, life, and kindness.
+o Restored World: A vibrant, natural palette. Lush greens (#4A7856), clear blues (#87CEEB), earthy browns (#8B4513), and soft floral tones (pinks, purples, yellows). Colors are introduced gradually to be awe-inspiring, not jarring.
+o Accessibility: Contrast ratios are kept above 4.5:1 for all text prompts. The transition from gray to color is accompanied by a 20-30% increase in luminosity.
+* Visual Hierarchy:
+o Light as a Guide: The next key interactive object will emit a faint, shimmering outline or have a subtle glow, drawing the user's eye.
+o Focus & Depth of Field: The area of interest is always in sharp focus, while the periphery is slightly softened to guide attention.
+o Scale: Important objects or characters are framed centrally to emphasize their significance.
+* Interaction Patterns:
+o Grasp/Touch: A simple trigger/grip press. The virtual hand closes gently around the object.
+o Benevolent Touch: Holding the hand near an object for 1-2 seconds causes the glow to intensify and transfer.
+o Feedback:
+* Haptic: A soft, pulsating hum in the controllers when hands are glowing; a gentle buzz on successful interaction.
+* Audio: Soft chimes, shimmering sounds, and resonant tones for positive actions. Dissonant, muted sounds for incorrect interactions.
+* Visual: Particle effects (sparkles, light trails), blooming animations, and color spreading across surfaces.
+
+
+
+
+
+3. User Journey Flow (Global Map)
+The experience follows a linear, narrative-driven path.
+[Start] -> [Entry Point: The Gray Garden] -> [Orientation: Scene 1 - The First Spark] -> [Core Interaction 1: Scene 2 - Windowbox Flower] -> [Core Interaction 2: Scene 3 - A Gentle Offering] -> [Core Interaction 3: Scene 4 - Clearing the Waters] -> [Core Interaction 4: Scene 5 - The Harmony Bell] -> [Core Interaction 5: Scene 6 - The Shared Lantern] -> [Climax/Completion: Scene 7 - The World Reborn] -> [Exit: End Credits / Option to Revisit Scenes]
+
+
+Storyboard Scenes with Integrated Components
+Scene 1: The First Spark
+* User Task Matrix Application:
+o Goal: Learn the core "benevolent touch" mechanic.
+o Pathway: Follow the voiceover prompt to focus, activate the hand glow, and touch the sapling.
+o Barrier: User might not understand how to "focus." Mitigation: A simple "hold trigger to gather light" prompt appears after 3 seconds.
+* Style Guide Application:
+o Color: The world is 99% monochrome. The single green leaf that appears is the only spot of vibrant color, making it an incredibly powerful and rewarding visual.
+o Visual Hierarchy: The sapling is the only object in the central foreground, making it the clear point of interest.
+* User Journey Flow Position:
+o Entry Point & Orientation. This is the first thing the user does. It is a controlled, non-skippable tutorial that sets the emotional and interactive tone for the entire experience.
+
+
+Scene 2: The Windowbox Flower
+* User Task Matrix Application:
+o Goal: Understand that benevolent actions can impact others, even from a distance. Introduce the "place/throw" mechanic.
+o Pathway: Pick up the glowing seed, aim towards the planter box, and perform a gentle throwing motion.
+o Barrier: User might struggle with the throwing accuracy. Mitigation: A soft, glowing arc appears to guide the throw, and the planter box has a large, forgiving hitbox.
+* Style Guide Application:
+o Visual Hierarchy: The glowing seed on the gray ground is the first guidepost. The sad figure in the window is the second, providing emotional motivation.
+o Interaction: The arcing light of the seed is a key visual feedback element, confirming the user's action and intent.
+* User Journey Flow Position:
+o First Core Interaction. This scene builds on the tutorial by introducing a new way to use the core mechanic, expanding the user's sense of what is possible.
+
+
+Scene 3: A Gentle Offering
+* User Task Matrix Application:
+o Goal: Learn that kindness requires patience and trust-building, not just direct action.
+o Pathway: Find the bowl, fill it, and place it down slowly. The user must physically back away to make the dog feel safe.
+o Barrier: User may act too quickly, scaring the dog and feeling like they failed. Mitigation: The dog's animation (whimpering, recoiling) is clear feedback. A soft voiceover might whisper, "Easy now... give it some space."
+* Style Guide Application:
+o Color: The shimmering water is the key element of benevolent light. The first bit of color to return is a slight warm tint to the dog's fur as it drinks.
+o Audio: The transition from whimpering to the soft lapping of water and a grateful "yap" is the primary reward.
+* User Journey Flow Position:
+o Core Interaction. This moment deepens the emotional complexity of the app, moving from simple "fixing" to empathetic "nurturing."
+
+
+Scene 4: Clearing the Waters
+* User Task Matrix Application:
+o Goal: Experience a large-scale environmental impact.
+o Pathway: Use both hands in a satisfying, continuous scooping motion to remove the sludge.
+o Barrier: The action could feel repetitive. Mitigation: The visual and audio feedback is highly satisfying, and the transformation of the environment is rapid and dramatic, encouraging completion.
+* Style Guide Application:
+o Color Palette: This is a major color reveal. As the dark sludge (#333333) is removed, the clear blue water (#87CEEB) and lush green riverbanks (#4A7856) are exposed in a beautiful, flowing animation.
+o Interaction: The two-handed interaction makes the user feel powerful and directly responsible for the large-scale change.
+* User Journey Flow Position:
+o Core Interaction / Mid-Point. This scene dramatically raises the stakes and the scale of the user's impact, showing them they can heal not just individuals, but the world itself.
+
+
+
+Scene 5: The Harmony Bell
+* User Task Matrix Application:
+o Goal: Solve a simple abstract puzzle to mend a social division.
+o Pathway: Pick up the broken bell pieces and "weld" them with light. Ring the repaired bell.
+o Barrier: The "welding" interaction might be unclear. Mitigation: The cracks on the bell glow, indicating where the user needs to apply their hands.
+* Style Guide Application:
+o Visual Hierarchy: The broken bell is the central, unavoidable object in the square. The sound wave from the bell is a key visual effect, rendered as a soft, golden ripple that washes over the people.
+o Color: The people are identical gray figures. When the ripple hits them, they blossom into a diverse array of individual colors, symbolizing the return of identity and community.
+* User Journey Flow Position:
+o Core Interaction. Introduces a new theme: social healing. It demonstrates that the user's benevolence can inspire connection between others.
+
+
+Scene 6: The Shared Lantern
+* User Task Matrix Application:
+o Goal: Make a conscious choice to share something of one's own to help another.
+o Pathway: Approach the huddled traveler and use the "benevolent touch" gesture to light their lantern from yours.
+o Barrier: The user might not realize they can share their light. Mitigation: The traveler's unlit lantern will have a faint, shimmering outline, inviting interaction.
+* Style Guide Application:
+o Interaction: The close-up, hand-to-hand interaction of lighting the other lantern is designed to be intimate and personal. The user's light dimming slightly is a crucial piece of feedback that reinforces the theme of giving.
+o Light: The scene is very dark, making the two lanterns the only sources of light and hope.
+* User Journey Flow Position:
+o Core Interaction / Penultimate Scene. This is a final, personal test of the user's empathy, moving from fixing the world to a direct, selfless act of giving.
+
+
+
+Scene 7: The World Reborn
+* User Task Matrix Application:
+o Goal: Reflect on the cumulative impact of all previous actions.
+o Pathway: No action required. The user is a passenger in a gentle, ascending movement, free to simply look and appreciate the world they have healed.
+o Barrier: The user might feel a loss of agency. Mitigation: This is a deliberate design choice. The "task" is observation and reflection, a moment of pure reward.
+* Style Guide Application:
+o Color Palette: The full, vibrant color palette is on display. Lines of golden light connect all the scenes the user visited, visually representing the "ripple effect."
+o Scale: The panoramic, god-like view provides a powerful sense of accomplishment and awe.
+* User Journey Flow Position:
+o Climax/Completion. This is the emotional payoff for the entire journey. It concludes the narrative arc, providing a profound sense of closure and satisfaction before the experience ends
+

@@ -1,0 +1,31 @@
+{
+  "name": "benevolence-vr-experience",
+  "version": "1.0.0",
+  "description": "A calming VR experience about kindness and restoration built with A-Frame",
+  "homepage": "https://github.com/yourusername/WebVR-AFrame",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/WebVR-AFrame.git"
+  },
+  "keywords": [
+    "vr",
+    "webxr",
+    "aframe",
+    "three.js",
+    "interactive",
+    "experience",
+    "kindness",
+    "restoration"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "start": "http-server -c-1 -p 8080",
+    "serve": "npm run start",
+    "open": "open http://localhost:8080",
+    "dev": "npm run serve"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
