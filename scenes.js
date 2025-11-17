@@ -168,7 +168,7 @@ window.sceneManager = {
     bgPlane.setAttribute('rotation', '0 0 0');
     bgPlane.setAttribute('width', '10');
     bgPlane.setAttribute('height', '7.5');
-    bgPlane.setAttribute('material', 'src: url(Images/Scene_1.png); shader: flat');
+    bgPlane.setAttribute('material', 'src: url(images/Scene_1.png); shader: flat');
     container.appendChild(bgPlane);
     
     // Add soil mound for depth
@@ -254,7 +254,7 @@ window.sceneManager = {
     bgPlane.setAttribute('rotation', '0 0 0');
     bgPlane.setAttribute('width', '10');
     bgPlane.setAttribute('height', '7.5');
-    bgPlane.setAttribute('material', 'src: url(Images/Scene_2.png); shader: flat');
+    bgPlane.setAttribute('material', 'src: url(images/Scene_2.png); shader: flat');
     container.appendChild(bgPlane);
     
     // Window frame with depth
@@ -377,7 +377,7 @@ window.sceneManager = {
     bgPlane.setAttribute('rotation', '0 0 0');
     bgPlane.setAttribute('width', '10');
     bgPlane.setAttribute('height', '7.5');
-    bgPlane.setAttribute('material', 'src: url(Images/Scene_3.png); shader: flat');
+    bgPlane.setAttribute('material', 'src: url(images/Scene_3.png); shader: flat');
     container.appendChild(bgPlane);
     
     // Bowl with depth and stand
@@ -495,7 +495,7 @@ window.sceneManager = {
     bgPlane.setAttribute('rotation', '0 0 0');
     bgPlane.setAttribute('width', '10');
     bgPlane.setAttribute('height', '7.5');
-    bgPlane.setAttribute('material', 'src: url(Images/Scene_4.png); shader: flat');
+    bgPlane.setAttribute('material', 'src: url(images/Scene_4.png); shader: flat');
     container.appendChild(bgPlane);
     
     // River with layered depth
@@ -592,7 +592,7 @@ window.sceneManager = {
     bgPlane.setAttribute('rotation', '0 0 0');
     bgPlane.setAttribute('width', '10');
     bgPlane.setAttribute('height', '7.5');
-    bgPlane.setAttribute('material', 'src: url(Images/Scene_5.png); shader: flat');
+    bgPlane.setAttribute('material', 'src: url(images/Scene_5.png); shader: flat');
     container.appendChild(bgPlane);
     
     // Bell with stand and decorative elements
@@ -713,7 +713,7 @@ window.sceneManager = {
     bgPlane.setAttribute('rotation', '0 0 0');
     bgPlane.setAttribute('width', '10');
     bgPlane.setAttribute('height', '7.5');
-    bgPlane.setAttribute('material', 'src: url(Images/Scene_6.png); shader: flat');
+    bgPlane.setAttribute('material', 'src: url(images/Scene_6.png); shader: flat');
     container.appendChild(bgPlane);
     
     // User lantern with detailed structure
@@ -839,7 +839,7 @@ window.sceneManager = {
     bgPlane.setAttribute('rotation', '0 0 0');
     bgPlane.setAttribute('width', '10');
     bgPlane.setAttribute('height', '7.5');
-    bgPlane.setAttribute('material', 'src: url(Images/Scene_7.png); shader: flat');
+    bgPlane.setAttribute('material', 'src: url(images/Scene_7.png); shender: flat');
     container.appendChild(bgPlane);
     
     const text = document.createElement('a-entity');
