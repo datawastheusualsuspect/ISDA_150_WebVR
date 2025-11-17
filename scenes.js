@@ -13,7 +13,8 @@ window.sceneManager = {
       this.createScene4_ClearingWaters,
       this.createScene5_HarmonyBell,
       this.createScene6_SharedLantern,
-      this.createScene7_WorldReborn
+      this.createScene7_WorldReborn,
+      this.createScene8_LibertyBell
     ];
     this.initializeQuestionnaires();
     this.loadScene(0);
@@ -60,6 +61,14 @@ window.sceneManager = {
   },
 
   displayQuestionnaire: function(sceneIndex) {
+    // Remove any existing questionnaire panel first
+    const existingPanel = document.getElementById('questionnairePanel');
+    if (existingPanel) {
+      existingPanel.remove();
+    }
+    
+    // Add click event delegation
+    document.body.addEventListener('click', this.handleQuestionnaireClick);
     const questions = this.questionnaires[sceneIndex];
     if (!questions) return;
     
@@ -89,9 +98,9 @@ window.sceneManager = {
       html += `<div style="font-size: 11px; margin-bottom: 6px;">${q.text}</div>`;
       
       if (q.type === 'scale') {
-        html += `<div style="display: flex; justify-content: space-between; gap: 2px;">`;
+        html += `<div class="scale-options" data-question-id="${q.id}" style="display: flex; justify-content: space-between; gap: 2px;">`;
         for (let i = q.min; i <= q.max; i++) {
-          html += `<button onclick="window.sceneManager.recordResponse('${q.id}', ${i})" style="
+          html += `<button data-value="${i}" style="
             flex: 1;
             padding: 4px;
             background: #333;
@@ -100,7 +109,9 @@ window.sceneManager = {
             border-radius: 3px;
             cursor: pointer;
             font-size: 10px;
-          ">${i}</button>`;
+            transition: all 0.2s;
+          " onmouseover="this.style.background='#555'" 
+             onmouseout="this.style.background='#333'">${i}</button>`;
         }
         html += `</div>`;
         html += `<div style="display: flex; justify-content: space-between; font-size: 9px; color: #999; margin-top: 4px;">`;
@@ -136,14 +147,43 @@ window.sceneManager = {
 
   nextScene: function() {
     const panel = document.getElementById('questionnairePanel');
-    if (panel) panel.remove();
+    if (panel) {
+      document.body.removeEventListener('click', this.handleQuestionnaireClick);
+      panel.remove();
+    }
     
     if (this.currentScene < this.scenes.length - 1) {
       this.colorProgress = Math.min(1, this.colorProgress + 1 / this.scenes.length);
       this.loadScene(this.currentScene + 1);
+      this.updateNavButtons();
     }
   },
 
+  handleQuestionnaireClick: function(event) {
+    // Handle scale option clicks
+    if (event.target.matches('.scale-options button')) {
+      const questionId = event.target.closest('.scale-options').dataset.questionId;
+      const value = parseInt(event.target.dataset.value, 10);
+      window.sceneManager.recordResponse(questionId, value);
+      
+      // Visual feedback
+      const buttons = event.target.parentElement.querySelectorAll('button');
+      buttons.forEach(btn => {
+        btn.style.background = '#333';
+        btn.style.color = '#FFD700';
+      });
+      event.target.style.background = '#FFD700';
+      event.target.style.color = '#000';
+    }
+    
+    // Handle multiple choice checkboxes
+    if (event.target.matches('input[type="checkbox"]')) {
+      const questionId = event.target.getAttribute('onchange').match(/'(.*?)'/)[1];
+      const value = event.target.nextElementSibling.textContent.trim();
+      window.sceneManager.recordResponse(questionId, value);
+    }
+  },
+  
   updateSkyAndLighting: function() {
     const sky = document.getElementById('sky');
     const light = document.getElementById('directionalLight');
@@ -915,6 +955,102 @@ window.sceneManager = {
     
     this.colorProgress = 1;
     this.updateSkyAndLighting();
+  },
+  
+  previousScene: function() {
+    if (this.currentScene > 0) {
+      this.colorProgress = Math.max(0, this.colorProgress - 1 / this.scenes.length);
+      this.loadScene(this.currentScene - 1);
+      this.updateNavButtons();
+    }
+  },
+  
+  updateNavButtons: function() {
+    const backBtn = document.getElementById('backBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (backBtn) {
+      backBtn.style.display = this.currentScene === 0 ? 'none' : 'block';
+    }
+    if (nextBtn) {
+      nextBtn.style.display = this.currentScene === this.scenes.length - 1 ? 'none' : 'block';
+    }
+  },
+  
+  loadScene: function(index) {
+    if (index < 0 || index >= this.scenes.length) return;
+    this.currentScene = index;
+    const container = document.getElementById('sceneContainer');
+    container.innerHTML = '';
+    this.scenes[index].call(this);
+    this.updateSkyAndLighting();
+    this.displayQuestionnaire(index);
+    this.updateNavButtons();
+  },
+  
+  createScene8_LibertyBell: function() {
+    const container = document.getElementById('sceneContainer');
+    
+    // Set sky color to a dawn-like color
+    document.getElementById('sky').setAttribute('material', 'color', '#4B6E91');
+    
+    // Add a ground plane
+    const ground = document.createElement('a-plane');
+    ground.setAttribute('position', '0 0 -4');
+    ground.setAttribute('rotation', '-90 0 0');
+    ground.setAttribute('width', '20');
+    ground.setAttribute('height', '20');
+    ground.setAttribute('color', '#2C3E50');
+    container.appendChild(ground);
+    
+    // Add the Liberty Bell image
+    const bell = document.createElement('a-image');
+    bell.setAttribute('src', '#libertyBell');
+    bell.setAttribute('position', '0 1.5 -4');
+    bell.setAttribute('width', '3');
+    bell.setAttribute('height', '2');
+    bell.setAttribute('opacity', '0');
+    bell.setAttribute('animation', 'property: opacity; to: 1; dur: 2000; delay: 500');
+    container.appendChild(bell);
+    
+    // Add title text
+    const title = document.createElement('a-text');
+    title.setAttribute('value', 'The Liberty Bell');
+    title.setAttribute('position', '0 2.5 -4');
+    title.setAttribute('align', 'center');
+    title.setAttribute('color', '#FFD700');
+    title.setAttribute('opacity', '0');
+    title.setAttribute('animation', 'property: opacity; to: 1; dur: 2000; delay: 1000');
+    container.appendChild(title);
+    
+    // Add description text
+    const description = document.createElement('a-text');
+    description.setAttribute('value', 'A Symbol of Freedom and Unity\n\nThank you for experiencing this journey.');
+    description.setAttribute('position', '0 1.8 -4');
+    description.setAttribute('align', 'center');
+    description.setAttribute('width', '6');
+    description.setAttribute('color', '#FFFFFF');
+    description.setAttribute('opacity', '0');
+    description.setAttribute('animation', 'property: opacity; to: 1; dur: 2000; delay: 1500');
+    container.appendChild(description);
+    
+    // Add a subtle ambient light
+    const ambientLight = document.createElement('a-light');
+    ambientLight.setAttribute('type', 'ambient');
+    ambientLight.setAttribute('color', '#FFF');
+    ambientLight.setAttribute('intensity', '0.6');
+    container.appendChild(ambientLight);
+    
+    // Add directional light for better visibility
+    const dirLight = document.createElement('a-light');
+    dirLight.setAttribute('type', 'directional');
+    dirLight.setAttribute('position', '1 1 1');
+    dirLight.setAttribute('intensity', '0.8');
+    container.appendChild(dirLight);
+    
+    // Disable the next button since this is the final scene
+    const nextBtn = document.getElementById('nextBtn');
+    if (nextBtn) nextBtn.style.display = 'none';
   }
 };
 
