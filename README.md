@@ -4,9 +4,7 @@ A calming, interactive Virtual Reality experience about kindness and restoration
 
 ## 🌍 Live Demo
 
-Visit the live demo: **[Benevolence VR Experience](https://yourusername.github.io/WebVR-AFrame/)**
-
-*(Replace `yourusername` with your GitHub username after deploying)*
+Visit the live demo: **[Benevolence VR Experience](https://datawastheusualsuspect.github.io/ISDA_150_WebVR/)**
 
 ## 🎮 Features
 
