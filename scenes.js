@@ -839,7 +839,7 @@ window.sceneManager = {
     bgPlane.setAttribute('rotation', '0 0 0');
     bgPlane.setAttribute('width', '10');
     bgPlane.setAttribute('height', '7.5');
-    bgPlane.setAttribute('material', 'src: url(images/Scene_7.png); shender: flat');
+    bgPlane.setAttribute('material', 'src: url(images/Scene_7.png); shader: flat');
     container.appendChild(bgPlane);
     
     const text = document.createElement('a-entity');
